@@ -1,0 +1,42 @@
+.profImage{
+    position: relative;
+    overflow:hidden ;
+    z-index: 9;
+
+}
+
+.profImage::after{
+    content: '';
+    z-index: -9;
+    position: absolute;
+    width: calc(2/3 * 100%);
+    height: calc(1/2 * 98%);   
+    left: 25%;
+    transform: rotate(15deg);
+    background: #FBBF24;
+    border-radius: 6px;
+
+
+}
+
+.cardImg{
+    position: relative;
+    overflow: hidden;
+}
+
+.cardImg-data{
+    position: absolute;
+    bottom: 10px;
+    width: 50%;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 25%;
+    padding: 0.5rem 2rem ;
+    text-align: center;
+    transform: translate(-50%,120%);
+    transition: 0.5s;
+}
+
+.cardImg:hover .cardImg-data{
+    transform: translate(-50%,0%);
+}

@@ -1,0 +1,69 @@
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+.translate-middle{
+    @apply transform -translate-x-1/2 -translate-y-1/2
+}
+
+.main-container-styles{
+    @apply @md:px-24
+}
+
+.main-linear-gradient{
+    @apply bg-gradient-to-r from-orange-500 to-yellow-400
+}
+.main-linear-gradient-to-left{
+    @apply bg-gradient-to-l from-orange-500 to-yellow-400
+
+}
+.main-icon-hover, .main-hover{
+    @apply hover:text-yellow-300 duration-500
+}
+.booksTitle-class{
+    @apply text-base p-2.5 rounded-2xl
+}
+.blue-btn-classes{
+    @apply btn bg-blue-700 hover:bg-yellow-500 duration-500 border-0
+}
+.main-bg{
+    @apply bg-[#060919]
+}
+.secondary-bg{
+    @apply bg-[#F7F5ED]
+}
+
+
+
+:root{
+    --main-color:#060919;
+}
+
+
+
+.navbar, .navbar .menu ul, .footer{
+    background-color: var(--main-color);
+}
+p{
+    color: black;
+}
+.universityRanks p, .blogSection p, header p, .articleDesc {
+    color: white;
+}
+.universityList-slider-text .secondCard{
+    color: rgb(240, 234, 234);
+}
+.students-section, .circle-uni-section, .aboutSection, .howWeTeach {
+    background-image: url("./assets/axiom-pattern.png");
+   
+}
+.uni-list-section{
+    background-image: url("./assets/cubes.png");
+}
+.uuniList-uniListSection{
+    background-image: url("./assets/dark-denim.png");
+}
+
+.articles-section{
+    background-image: url("./assets/black-thread-light.png");
+}
