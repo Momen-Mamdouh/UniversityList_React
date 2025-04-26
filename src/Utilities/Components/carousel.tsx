@@ -80,7 +80,7 @@ function Carousel(props:any){
                     <CarouselChangeBtn c={carouselNumberState} chevronDir={`left`} changeFn={()=> changeCarouselIndex('left')} />
  
                         {   
-                            props.booksData.slice(0,5).map((book:IBooksResult, index:number) => 
+                            props.booksData.slice(0,5).map((index:number) => 
                                 <CarouselNumber  key={index} carouselNumber={index+carouselNumberState} />
                             )
                         }

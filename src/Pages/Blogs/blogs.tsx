@@ -7,7 +7,7 @@ import BlogsCard from "../../Utilities/Components/blogsCard";
 import LoaderScreen from "../../Components/Loader/loaderScreen";
 
 
-function Blogs(props:any){
+function Blogs(){
 
     const { id } = useParams<{ id: string }>();
     const [pexelIndex, setPexelIndex] = useState(0);
@@ -68,7 +68,7 @@ function Blogs(props:any){
                     </div>
 
                     <div className="how-we-teach-blogs grid grid-cols-12 gap-10 main-container-styles py-16 main-container-styles">
-                        {pexelBlogsPhotos.slice(0,9).map((img, index) => (
+                        {pexelBlogsPhotos.slice(0,9).map((img) => (
                             <BlogsCard key={img.id}  blogImg={img.src.landscape} blogLink={'https://www.youtube.com/watch?v=B-ph18b3X7Y'}/>
                         ))}
                         

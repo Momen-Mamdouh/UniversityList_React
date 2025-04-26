@@ -21,9 +21,9 @@ import EmptyComponent from "../../Utilities/Components/emptyComp";
         
         const { id } = useParams<{ id: string }>();
 
-        const { data: articlesData, isLoading:articlesLoading, isSuccess:articlesDataFound} = useArticlesQuery(id!);
+        const { data: articlesData,  isSuccess:articlesDataFound} = useArticlesQuery(id!);
 
-        const articles = articlesData?.data.articles ;
+        // const articles = articlesData?.data.articles ;
 
         const { data: pexelApiData, isLoading:pexelLoading, isSuccess:PexelDataFound} = usePexelsPhotos('Articles');
         const pexelArticlesPhotos:Photo[] = pexelApiData?.photos || [];

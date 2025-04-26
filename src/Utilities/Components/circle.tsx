@@ -1,5 +1,3 @@
-import Icon from "./icon"
-
 
 function Circle(props:any){
 

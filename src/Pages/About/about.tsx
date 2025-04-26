@@ -12,7 +12,7 @@ import './about.css'
 
 
 
-function About(props:any){
+function About(){
 
     const profsImgs:string[] = [
         profImg1,
