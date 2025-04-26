@@ -103,7 +103,7 @@ function HomeStudentSection(){
                                         digital media with existing media it easier for students to learn anywhere and 
                                         anytime</p>
 
-                                <MainButton buttonText={'Get Started'} buttonClasses={'w-full md:w-1/2 md:mx-auto'}/>
+                                <MainButton link={'/uniList'} buttonText={'Get Started'} buttonClasses={'w-full md:w-1/2 md:mx-auto'}/>
                         </HomeSectionsData>
                             
 

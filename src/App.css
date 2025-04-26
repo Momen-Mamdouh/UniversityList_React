@@ -2,6 +2,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+
+
 .translate-middle{
     @apply transform -translate-x-1/2 -translate-y-1/2
 }

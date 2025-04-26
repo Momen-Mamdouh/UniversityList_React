@@ -115,7 +115,7 @@ function HomeUniCirclesSection(){
                             <p  className="w-full md:w-3/4 py-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis consectetur asperiores repudiandae impedit harum animi at omnis qui sed. Vitae asperiores quas voluptatibus vero hic!
                             </p>
 
-                        <MainButton buttonText={'Get Started'} buttonClasses={'w-full md:w-1/2'} />
+                        <MainButton link={'/uniList'} buttonText={'Get Started'} buttonClasses={'w-full md:w-1/2'} />
                     </HomeSectionsData>
             </div>
     

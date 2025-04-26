@@ -3,6 +3,7 @@ import SocialList from "../Utilities/Components/socialList"
 
 
 
+
 function Navbar(){
   return( 
     <div className="px-24 navbar shadow-sm fixed  z-50"  >
@@ -52,9 +53,9 @@ function Navbar(){
 
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-5">
           <SocialList listClasses={'bg-gradient-to-l from-cyan-500 to-blue-400 p-2.5 rounded-full'}/>
-        
+
       </div>
 
     </div>
