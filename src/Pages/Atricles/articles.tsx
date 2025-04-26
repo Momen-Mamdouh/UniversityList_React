@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useArticlesQuery } from "../../Services/universityArticlesApi"
 import Header from "../../Utilities/Components/header";
 import { usePexelsPhotos } from "../../Services/pexelsImageApi";
-import { Photo } from "../../Interfaces/IPexelResponse";
 import { useEffect, useState } from 'react';
 import LoaderScreen from "../../Components/Loader/loaderScreen";
 import { IArticle } from "../../Interfaces/IArticlesResponse";
@@ -24,9 +23,14 @@ import EmptyComponent from "../../Utilities/Components/emptyComp";
         const { data: articlesData,  isSuccess:articlesDataFound} = useArticlesQuery(id!);
 
         // const articles = articlesData?.data.articles ;
+       
+        
 
         const { data: pexelApiData, isLoading:pexelLoading, isSuccess:PexelDataFound} = usePexelsPhotos('Articles');
-        const pexelArticlesPhotos:Photo[] = pexelApiData?.photos || [];
+        
+        const pexelArticlesPhotos = (pexelApiData as any)?.photos || [];
+
+        
 
 
       

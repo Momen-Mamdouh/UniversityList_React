@@ -34,6 +34,7 @@ function UniversityList(){
         isSuccess:universityDataSuccess}  = useUniversityListQuery(country);
 
     const { data: pexelApiData, isLoading:pexelLoading} = usePexelsPhotos('university');
+    const pexelListPhotos = (pexelApiData as any)?.photos || [];
 
 
     useEffect(() => {
@@ -85,11 +86,11 @@ function UniversityList(){
         pexelEndIndex = pexelStartIndex + 2;
         
         
-        if (pexelEndIndex >= pexelApiData?.photos.length) {
+        if (pexelEndIndex >= pexelListPhotos.length) {
             pexelStartIndex = 0;
             pexelEndIndex = pexelStartIndex + 2;
         }
-        pexelPhotosSlice = pexelApiData?.photos.slice(pexelStartIndex, pexelEndIndex);
+        pexelPhotosSlice = pexelListPhotos.slice(pexelStartIndex, pexelEndIndex);
         return pexelPhotosSlice
     }
 
