@@ -144,7 +144,7 @@ function Home(){
                        </div>
 
                        <div className="blogSection-cards grid grid-cols-1 md:grid-cols-3 px-12 md:px-36 gap-10 items-center justify-between">
-                                {blogCardsData.map((card)=> <MainCard data={card}  />)}
+                                {blogCardsData.map((card,index)=> <MainCard key={index} data={card}  />)}
                        </div>
         
                 </HomeSectionsData>
