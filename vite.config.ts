@@ -8,8 +8,6 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: './',
-  define: {
-    'require': 'undefined',
-  },
+  
  
 });
