@@ -1,10 +1,11 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { ReactElement } from "react";
+import { IconType } from "react-icons/lib";
 
 
 
 
 export interface IIconWithText{
-    icon:IconProp,
+    icon:ReactElement<IconType>,
     iconClasses:string,
     iconText?:string,
 }

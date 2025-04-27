@@ -1,6 +1,6 @@
-import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import { FaLinkedinIn, FaGithubAlt } from 'react-icons/fa6'
+
 
 
 function SocialList(props:any){
@@ -9,13 +9,13 @@ function SocialList(props:any){
         <div className={`grid grid-flow-col gap-10 ${props.listClasses}`}>
             <a href="https://github.com/Momen-Mamdouh">
                 <i className="text-2xl main-icon-hover">
-                     <FontAwesomeIcon icon={faGithubAlt} />
+                     <FaGithubAlt />
                 </i>
             </a>
 
             <a href="https://www.linkedin.com/in/mo-men-mamdouh-aa5baa20a/">
                 <i className="text-2xl main-icon-hover">
-                    <FontAwesomeIcon icon={faLinkedinIn} />
+                    <FaLinkedinIn />
                 </i>
             </a>
 

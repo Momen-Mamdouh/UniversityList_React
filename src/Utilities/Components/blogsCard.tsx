@@ -1,5 +1,5 @@
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FaCirclePlay  } from "react-icons/fa6"
+
 
 function BlogsCard(props:any){
 
@@ -17,7 +17,7 @@ function BlogsCard(props:any){
                 <div className="card-actions justify-center">
                     <a href={props.blogLink} target="_blank" className="btn bg-red-600 border-0 hover:bg-red-700 duration-300">
                         <i className="text-2xl">
-                            <FontAwesomeIcon icon={faPlayCircle} />
+                            <FaCirclePlay />
                         </i>
                     </a>
                 </div>
