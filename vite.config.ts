@@ -8,6 +8,18 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: './',
-  
+  optimizeDeps: {
+    include: [
+      'pexels',
+      'react-spinners',
+      'keep-react'
+    ],
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis'
+      }
+    }
+  }
  
 });
