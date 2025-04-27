@@ -1,6 +1,6 @@
 
 import './App.css'
-// import '@fortawesome/fontawesome-free/css/all.css';
+
 
 import Home from './Pages/Home/Home'
 import Layout from './Layout/Layout'

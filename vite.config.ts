@@ -8,4 +8,9 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: './',
-})
+  build: {
+    rollupOptions: {
+      external: ['@fortawesome/fontawesome-svg-core'],  // Optional: Externalize the package if needed
+    },
+  },
+});
