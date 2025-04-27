@@ -7,6 +7,8 @@ import { IIconWithText } from "../../Interfaces/IIconWithText";
 
 import uniLecturerImage from '../../assets/University/lecturer.png';
 import uniStudentImage from '../../assets/University/newStudent.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faGlobe, faPaperPlane, faWallet } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -15,25 +17,25 @@ function HomeStudentSection(){
     
         const iconsWithTextObj:IIconWithText[] = [
             {
-                icon:`fa-check`, 
+                icon:faCheck, 
                 iconClasses:`p-0`,
                 iconText:``
             },
     
             {
-                icon:`fa-check`, 
+                icon:faCheck, 
                 iconClasses:`p-1`,
                 iconText:``
             },
     
             {
-                icon:`fa-check`, 
+                icon:faCheck, 
                 iconClasses:`p-2`,
                 iconText:``
             },
     
             {
-                icon:`fa-check`, 
+                icon:faCheck, 
                 iconClasses:`p-3`,
                 iconText:``
             },
@@ -48,15 +50,21 @@ function HomeStudentSection(){
                                         <div className="icons-list">
                                                 <ul className="grid md:grid-cols-3 gap-10  grid-cols-1">
                                                     <li className="col-span-1 flex items-center gap-10">
-                                                        <IconWithText iconClasses={'fa-paper-plane text-xl  bg-blue-500'}/>
+                                                        <i className={'text-xl  bg-blue-500'}>
+                                                           <FontAwesomeIcon icon={faPaperPlane} />
+                                                        </i>
                                                     </li>
                                                     
                                                     <li className="col-span-1 flex items-center gap-10">
-                                                        <IconWithText iconClasses={'fa-globe text-xl  bg-red-500'}/>
+                                                        <i className={'text-xl  bg-red-500'}>
+                                                            <FontAwesomeIcon icon={faGlobe} />
+                                                        </i>
                                                     </li>
 
                                                     <li className="col-span-1 flex items-center gap-10">
-                                                        <IconWithText iconClasses={'fa-wallet text-xl  bg-yellow-500'}/>
+                                                        <i className={'text-xl  bg-yellow-500'}>
+                                                                <FontAwesomeIcon icon={faWallet} />
+                                                        </i>
 
                                                     </li>
                                                 </ul>
@@ -81,9 +89,11 @@ function HomeStudentSection(){
                             </p>
 
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
-                                {iconsWithTextObj.map((iconWithText,index)=>  
+                                {iconsWithTextObj.map((i,index)=>  
                                     <li key={index} className="col-span-1 flex items-center gap-10 ">
-                                        <IconWithText iconClasses={`${iconWithText.iconClasses} text-md rounded-sm  fa-check bg-orange-500`}/>
+                                        <i className={`${i.iconClasses} text-md rounded-sm bg-orange-500`}>
+                                            <FontAwesomeIcon icon={faCheck} />
+                                        </i>
                                     </li>)
                                 }
                                     

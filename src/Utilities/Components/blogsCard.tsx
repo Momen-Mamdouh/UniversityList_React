@@ -1,3 +1,5 @@
+import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 function BlogsCard(props:any){
 
@@ -14,7 +16,9 @@ function BlogsCard(props:any){
                 <p className="text-white!">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus officiis praesentium eius similique totam, laudantium maiores atque fuga doloremque eaque dolorem itaque minima? Repellendus soluta quasi adipisci autem, dolorum iure?</p>
                 <div className="card-actions justify-center">
                     <a href={props.blogLink} target="_blank" className="btn bg-red-600 border-0 hover:bg-red-700 duration-300">
-                        <i className="fas fa-play-circle text-2xl"></i>
+                        <i className="text-2xl">
+                            <FontAwesomeIcon icon={faPlayCircle} />
+                        </i>
                     </a>
                 </div>
             </div>

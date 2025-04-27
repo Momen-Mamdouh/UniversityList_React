@@ -1,8 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IIconWithText } from "../../Interfaces/IIconWithText";
 import Circle from "../../Utilities/Components/circle";
 import Icon from "../../Utilities/Components/icon";
 import MainButton from "../../Utilities/Components/mainButton";
 import HomeSectionsData from "../HomeSectionsData/homeSectionsData";
+import { faAtom, faBrain, faBuildingColumns, faFlaskVial, faGlobe, faGraduationCap, faInfinity, faNetworkWired, faPersonChalkboard, faSchoolFlag, faTablets, faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faStudiovinari } from "@fortawesome/free-brands-svg-icons";
 
 
 function HomeUniCirclesSection(){
@@ -11,54 +14,54 @@ function HomeUniCirclesSection(){
 
     const circleOneIcons:IIconWithText[] = [
         {
-            icon:`fa-atom`, 
+            icon: faAtom, 
             iconClasses:`text-blue-500  top-0 start-1/2`,
         },
 
         {
-            icon:`fa-flask-vial`, 
+            icon: faFlaskVial, 
             iconClasses:`text-lime-500 top-1/4 start-67`,
         },
 
         {
-            icon:`fa-tablets`, 
+            icon: faTablets, 
             iconClasses:`text-violet-400 top-3/4 start-67`,
         },
 
         {
-            icon:`fa-brain`, 
+            icon: faBrain, 
             iconClasses:`text-pink-500 top-full start-1/2`,
         },
 
         {
-            icon:`fa-building-columns`, 
+            icon: faBuildingColumns, 
             iconClasses:'text-slate-400 top-3/4 start-4 ',
         },
 
         {
-            icon:`fa-graduation-cap`, 
+            icon: faGraduationCap, 
             iconClasses:`text-black top-1/4 start-4`,
         },
     ];
 
     const circleTwoIcons:IIconWithText[] = [
         {
-            icon:`fa-infinity`, 
+            icon: faInfinity, 
             iconClasses:`text-violet-950  top-0 start-1/2`,
         },
 
         {
-            icon:`fa-network-wired`, 
+            icon: faNetworkWired, 
             iconClasses:`text-sky-700 top-1/2 start-0`,
         },
 
         {
-            icon:`fa-person-chalkboard`, 
+            icon: faPersonChalkboard, 
             iconClasses:`text-blue-700 top-1/2 start-full`,
         },
 
         {
-            icon:`fa-globe`, 
+            icon: faGlobe, 
             iconClasses:`text-sky-500 top-50 start-1/2`,
         },
 
@@ -67,17 +70,17 @@ function HomeUniCirclesSection(){
     const circleThreeIcons:IIconWithText[] = [
 
         {
-            icon:`fa-video`, 
+            icon: faVideo, 
             iconClasses:`text-violet-500 top-0 start-1/2`,
         },
 
         {
-            icon:`fa-schoold`, 
+            icon: faSchoolFlag, 
             iconClasses:`text-black top-1/2 start-0`,
         },
 
         {
-            icon:`fa-brands fa-studiovinari`, 
+            icon: faStudiovinari, 
             iconClasses:`text-black top-1/2 start-full `,
         },
 
@@ -92,15 +95,24 @@ function HomeUniCirclesSection(){
                         <div className="relative circleContainer start-full md:start-1/4 md:top-1/2   translate-middle bg-gradient-to-tl from-slate-50 to-amber-300">
                                 
                                 <Circle cricleClasses="w-72 h-72  ">
-                                    {circleOneIcons.map((circleIcon, index)=> <Icon key={index} iconClasses={`${circleIcon.icon} absolute translate-middle ${circleIcon.iconClasses} `}/>)}
+                                    {circleOneIcons.map((circleIcon, index)=> 
+                                        <i key={index} className={`${circleIcon.iconClasses} absolute translate-middle `}>
+                                            <FontAwesomeIcon icon={circleIcon.icon} />
+                                        </i>)}
                                 </Circle>
 
                                 <Circle cricleClasses="w-52 h-52 bg-gradient-to-tr from-slate-100 to-amber-100 via-amber-100">
-                                    {circleTwoIcons.map((circleIcon,index)=> <Icon key={index} iconClasses={`${circleIcon.icon} text-2xl  absolute  translate-middle ${circleIcon.iconClasses} `}/>)}
+                                    {circleTwoIcons.map((circleIcon,index)=> 
+                                        <i key={index} className={`${circleIcon.iconClasses} text-2xl  absolute  translate-middle `}>
+                                                <FontAwesomeIcon icon={circleIcon.icon} />
+                                        </i>
+                                    )}
                                 </ Circle >
 
                                 <Circle cricleClasses="w-32 h-32 bg-gradient-to-b from-zinc-50 to-amber-200" >
-                                    {circleThreeIcons.map((circleIcon, index)=> <Icon key={index} iconClasses={`${circleIcon.icon} text-2xl  absolute  translate-middle ${circleIcon.iconClasses} `}/>)}
+                                    {circleThreeIcons.map((circleIcon, index)=> <i key={index} className={`text-2xl  absolute  translate-middle ${circleIcon.iconClasses} `}>
+                                        <FontAwesomeIcon icon={circleIcon.icon} />
+                                    </i>)}
                                 </Circle>
 
                             

@@ -1,5 +1,10 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
+
+
+
 export interface IIconWithText{
-    icon:string,
+    icon:IconProp,
     iconClasses:string,
     iconText?:string,
 }

@@ -1,6 +1,6 @@
 
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 function UniItemList(props:any){
 
     return(
@@ -12,7 +12,10 @@ function UniItemList(props:any){
                 <div className="text-base uppercase font-semibold opacity-60 pt-2.5">{props.countryCode}</div>
                 </div>
                 <a className="btn btn-square btn-ghost" role="button" href={props.universityDomain} target="_blank">
-                    <i className="fa-solid fa-house main-icon-hover"></i>
+                    <i className="main-icon-hover">
+                        <FontAwesomeIcon icon={faHouse} />
+                    </i>
+                  
                 </a>
             </li>
          </>
