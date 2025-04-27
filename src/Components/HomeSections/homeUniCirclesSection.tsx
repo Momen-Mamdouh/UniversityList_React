@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IIconWithText } from "../../Interfaces/IIconWithText";
 import Circle from "../../Utilities/Components/circle";
-import Icon from "../../Utilities/Components/icon";
 import MainButton from "../../Utilities/Components/mainButton";
 import HomeSectionsData from "../HomeSectionsData/homeSectionsData";
 import { faAtom, faBrain, faBuildingColumns, faFlaskVial, faGlobe, faGraduationCap, faInfinity, faNetworkWired, faPersonChalkboard, faSchoolFlag, faTablets, faVideo } from "@fortawesome/free-solid-svg-icons";

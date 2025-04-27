@@ -1,4 +1,4 @@
-import IconWithText from "../../Utilities/Components/iconWithText";
+
 import MainButton from "../../Utilities/Components/mainButton";
 import StudentImageDiv from "../../Utilities/Components/studentImageDiv";
 import HomeSectionsData from "../HomeSectionsData/homeSectionsData";
