@@ -8,7 +8,4 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: './',
-  optimizeDeps: {
-    exclude: ['@fortawesome/fontawesome-free']
-  }
 })
