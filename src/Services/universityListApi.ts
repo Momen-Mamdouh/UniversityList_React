@@ -9,7 +9,7 @@ export const useUniversityListQuery = function(country: string) {
     return useQuery({
         queryKey: ['universities', country],
         queryFn: async () => {
-        const res = await fetch(`/api/universities?country=${encodeURIComponent(country)}`);
+        const res = await fetch(`/api/universities?country=${country}`);
         if (!res.ok) throw new Error('Failed to fetch universities');
         return res.json();
         }
