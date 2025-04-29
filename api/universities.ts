@@ -1,19 +1,20 @@
-
-import axios, { AxiosResponse } from 'axios';
-
-const universitiesApiUrl = 'https://universities.hipolabs.com/search';
+import axios from 'axios';
 
 export default async function handler(req: any, res: any) {
-  try {
-    const { country } = req.query;
+  const { country } = req.query;
 
-    const axiosData: AxiosResponse = await axios.get(universitiesApiUrl, {
-      params: country ? { country } : {},
+  if (!country) {
+    return res.status(400).json({ error: 'Country is required' });
+  }
+
+  try {
+    const response = await axios.get('https://universities.hipolabs.com/search', {
+      params: { country },
     });
 
-    res.status(200).json(axiosData.data);
+    res.status(200).json(response.data);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Failed to fetch universities.' });
+    console.error('Error fetching universities:', error);
+    res.status(500).json({ error: 'Failed to fetch universities' });
   }
 }
