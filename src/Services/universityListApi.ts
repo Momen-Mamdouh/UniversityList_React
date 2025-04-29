@@ -1,10 +1,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-
-
-
-
 export const useUniversityListQuery = function(country: string) {
     return useQuery({
         queryKey: ['universities', country],
