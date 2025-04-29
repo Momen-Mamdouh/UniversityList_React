@@ -7,7 +7,7 @@ export const geoapifyApiKey:string = `f1d0294ebe0248f6aa5f6cc7414afbc4`;
 
 
 
-export const universitesListBaseUrl:string = `http://universities.hipolabs.com/search?`;
+export const universitesListBaseUrl:string = `https://universities.hipolabs.com/search?`;
 export const newsApiEveryArticlesBaseUrl:string = `https://newsapi.org/v2/everything?q=University&apiKey=${newsApiKey}` ;
 export const pexelsApiBaseUrl:string = `https://api.pexels.com/v1/search`;
 export const articlesApiBaseUrl:string = `https://newsapi.org/v2/everything`
