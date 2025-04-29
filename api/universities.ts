@@ -16,8 +16,20 @@ export default async function handler(req: any, res: any) {
     });
 
     res.status(200).json(response.data);
-  } catch (error) {
-    console.error('Error fetching universities:', error);
-    res.status(500).json({ error: 'Failed to fetch universities' });
-  }
+    } 
+    catch (error) {
+      console.error('Error fetching universities:', error);
+    
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error message:', error.message);
+        console.error('Axios error response data:', error.response?.data);
+        console.error('Axios error response status:', error.response?.status);
+        console.error('Axios error config:', error.config);
+      } else {
+        console.error('Unexpected error:', error);
+      }
+    
+      res.status(500).json({ error: 'Failed to fetch universities' });
+    }
+    
 }
