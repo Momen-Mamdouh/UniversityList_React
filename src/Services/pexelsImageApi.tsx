@@ -1,23 +1,25 @@
-import { createClient, ErrorResponse, PhotosWithTotalResults } from 'pexels';
+import { PhotosWithTotalResults } from 'pexels';
 import {  pexelsApiKey } from "../Utilities/environment";
 import { useQuery } from "@tanstack/react-query";
 
 
-const client = createClient(pexelsApiKey);
+export const usePexelsPhotos = (query: string) => {
+  return useQuery({
+    queryKey: ['pexelsPhotos', query],
+    queryFn: async (): Promise<PhotosWithTotalResults> => {
+      const response = await fetch(`https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=80&size=medium`, {
+        headers: {
+          Authorization: pexelsApiKey,
+        },
+      });
 
-export const usePexelsPhotos =  function(query:string) {
-    return useQuery({
-      queryKey: ['pexelsPhotos', query],
-      queryFn: async () => {
-        const result:PhotosWithTotalResults | ErrorResponse = await client.photos.search(
-          { query, per_page:80, size: 'medium'}
-        );
-        return result;
+      if (!response.ok) {
+        throw new Error('Failed to fetch photos');
       }
-    });
+
+      const data = await response.json();
+      return data;
+    }
+  });
 };
-  
-
-
-
 
