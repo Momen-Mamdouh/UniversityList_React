@@ -18,3 +18,10 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Failed to fetch universities' });
   }
 }
+
+// Add this to explicitly mark as ES Module
+export const config = {
+  api: {
+    bodyParser: false, // or true if you need body parsing
+  },
+};
