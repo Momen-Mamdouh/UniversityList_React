@@ -1,24 +1,41 @@
-import axios from 'axios';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import axios from 'axios';
 
 export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
-  const country = req.query.country as string;
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-  if (!country) {
-    return res.status(400).json({ error: 'Country is required' });
+  // Handle OPTIONS for CORS preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
   }
 
   try {
-    const response = await axios.get('http://universities.hipolabs.com/search', {
+    const { country } = req.query;
+    
+    if (!country) {
+      return res.status(400).json({ error: 'Country is required' });
+    }
+
+    const response = await axios.get('https://universities.hipolabs.com/search', {
       params: { country },
     });
-
+    
     return res.status(200).json(response.data);
-  } catch (error: any) {
-    console.error('Error fetching universities:', error?.message ?? error);
-    return res.status(500).json({ error: 'Failed to fetch universities' });
+  } catch (error) {
+    console.error('API Error:', error);
+    return res.status(500).json({
+      error: 'Internal Server Error',
+      details: error.message
+    });
   }
 }
