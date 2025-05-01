@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import SocialList from "../Utilities/Components/socialList"
-
+import Logo from '/src/assets/logo.svg'
 
 function Footer(){
     return(
@@ -8,7 +8,7 @@ function Footer(){
         
         <aside className="md:mx-10 mx-0">
         <div className="w-[15%] flex items-center ">
-            <img className="object-cover"  alt="Graduation Hat Logo" src="/src/assets/logo.svg" />
+            <img className="object-cover"  alt="Graduation Hat Logo" src={Logo} />
             <h2 className="text-3xl font-bold">UniBase.</h2>
           </div>
             <p className="md:w-1/3 w-full">

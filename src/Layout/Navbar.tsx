@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import SocialList from "../Utilities/Components/socialList"
-
+import Logo from '/src/assets/logo.svg'
 
 
 
@@ -32,7 +32,7 @@ function Navbar(){
         </div>
         
           <Link to={''} className="w-[15%] flex items-center">
-            <img className="object-cover"  alt="Graduation Hat Logo" src="/src/assets/logo.svg" />
+            <img className="object-cover"  alt="Graduation Hat Logo" src={Logo} />
             <h2 className="text-2xl font-bold">UniBase.</h2>
           </Link>
        
