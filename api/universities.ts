@@ -12,7 +12,7 @@ export default async function handler(
   }
 
   try {
-    const response = await axios.get('https://universities.hipolabs.com/search', {
+    const response = await axios.get('http://universities.hipolabs.com/search', {
       params: { country },
     });
 
