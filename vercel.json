@@ -1,9 +1,5 @@
 {
-    "version": 2,
-    "functions": {
-      "api/**/*.ts": {
-        "runtime": "nodejs"
-      }
-    }
-  }
+    "version": 2
+
+}
   
