@@ -1,4 +1,3 @@
-import axios from 'axios';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(
@@ -12,10 +11,9 @@ export default async function handler(
   }
 
   try {
-    const response = await axios.get('https://universities.hipolabs.com/search?', {
-      params: { country },
-    });
-    res.status(200).json(response.data);
+    const apiRes = await fetch(`https://universities.hipolabs.com/search?country=${encodeURIComponent(country)}`);
+    const data = await apiRes.json();
+    res.status(200).json(data);
   } catch (error) {
     console.error('Error fetching universities:', error);
     res.status(500).json({ error: 'Failed to fetch universities' });
