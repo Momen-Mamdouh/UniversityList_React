@@ -11,11 +11,10 @@ export default async function handler(
     return res.status(400).json({ error: 'Country is required' });
   }
 
-  const targetUrl = `https://universities.hipolabs.com/search?country=${encodeURIComponent(country)}`;
-  console.log(`Forwarding request to: ${targetUrl}`);
-
   try {
-    const response = await axios.get(targetUrl);
+    const response = await axios.get('https://universities.hipolabs.com/search?', {
+      params: { country },
+    });
     res.status(200).json(response.data);
   } catch (error) {
     console.error('Error fetching universities:', error);
