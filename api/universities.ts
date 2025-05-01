@@ -1,7 +1,10 @@
 // api/universities.ts
 import axios from 'axios';
 
-export default async function handler( ) {
+export default async function handler( 
+  req:any,
+  res:any
+) {
   const { country } = req.query;
 
   if (!country) {
