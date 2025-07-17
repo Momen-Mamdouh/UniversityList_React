@@ -1,63 +1,46 @@
 import { useParams } from "react-router-dom";
-import Header from "../../Utilities/Components/header";
-import { useEffect, useState } from "react";
-import { usePexelsPhotos } from "../../Services/pexelsImageApi";
-import { Photo } from "../../Interfaces/IPexelResponse";
-import BlogsCard from "../../Utilities/Components/blogsCard";
-import LoaderScreen from "../../Components/Loader/loaderScreen";
+import MainHeader from "@/src/Components/mainHeader";
+import LoaderScreen from "@/src/Components/loaderScreen";
+
+import BlogsCard from "@/src/Components/Cards/blogsCard";
 
 
-function Blogs(){
+import {  Photo } from "pexels/dist/types";
+import { IBlogQuery } from "@/src/Interfaces/IBlogQuery";
+import { useGNewsBlogsQuery } from "@/src/Features/Blog/Hooks/useGNewsBlogsQuery";
+
+import BlogHeader from "@/src/Features/Blog/Components/BlogHeader/blogHeader";
+import ResponseLoader from "@/src/Components/ResponseLaoder/ResponseLoader";
+import { useGeoapify } from "@/src/Contexts/mainContext";
+import usePexelsPhotos from "@/src/Features/Articles/Hooks/usePexelsPhotos";
+import { fallbackImg } from "@/src/Utilities/environment";
+
+
+
+export default function Blogs(){
 
     const { id } = useParams<{ id: string }>();
-    const [pexelIndex, setPexelIndex] = useState(0);
+    const { country, geoapifyIsLoading } = useGeoapify();
+    const countryToNews = country.slice(0,2).toLowerCase();
+    const {pexelsPhotos: pexelBlogsPhotos, pexelLoading, pexelIndex } = usePexelsPhotos({query:'University Blogs'});
 
 
-    const { data: pexelApiData, isLoading:pexelLoading, isSuccess:PexelDataFound} = usePexelsPhotos('university Blogs');
-    const pexelBlogsPhotos = (pexelApiData as any)?.photos || [];
-
- 
-    
-
-    
-    useEffect(()=>{
-                const interval = setInterval(formatIndexOfPexelImages, 3000); 
-            
-                return () => clearInterval(interval); 
-    
-    }, [pexelBlogsPhotos.length])
-
-    function formatIndexOfPexelImages():void{
-        if(PexelDataFound && pexelBlogsPhotos.length !=0){
-              setPexelIndex((prevIndex) => (prevIndex + 1) % pexelBlogsPhotos.length);
-        }
-      }
+    const blogsQuery:IBlogQuery = {language:'en', text:'University'};
+    const {data:gNewsBlogs, isLoading:gNewsLoading}  = useGNewsBlogsQuery(blogsQuery, countryToNews);
+   
 
     return(
         <>
 
-            <LoaderScreen isLoading = {pexelLoading} />
+            {gNewsLoading && pexelLoading && <LoaderScreen  />}
         
             {
-                <Header>
-                     <div className="grid md:grid-cols-12  grid-cols-6 h-full "
-                        style={{
-                            backgroundImage: `url(${pexelBlogsPhotos[pexelIndex]?.src.original})`,
-                            backgroundRepeat:'no-repeat',
-                            backgroundPosition:'center center',
-                            backgroundSize:'cover',
-                          }}
-                     >
-                                <div className="col-span-6 items-center flex flex-col md:py-56 z-5  justify-center">
-                                    <h1 className=" text-5xl px-10 md:w-2/3  md:text-start text-center"> {id} Blogs</h1>
-                                </div>
-                                <div className="col-span-6 items-center md:justify-center justify-start  flex flex-col  z-5 ">
-                                        <img className=" rounded-md h-1/2 object-cover w-2/3 bg-transparent text-center" src={pexelBlogsPhotos[pexelIndex+1]?.src.original} alt="" />
-                                    </div>
-                                
-                        </div>
+                <MainHeader bgClasses={`bg-[linear-gradient(90deg,rgba(2,0,36,0.4)_0%,rgba(9,9,121,0.2)_100%) bg-cover bg-center bg-no-repeat`}
+                            bgImg={pexelBlogsPhotos[pexelIndex]?.src.original ?? fallbackImg}>
 
-                </Header>
+                    {!pexelLoading && <BlogHeader pexelImage={pexelBlogsPhotos[pexelIndex]} id={id} pexelImageNext={pexelBlogsPhotos[pexelIndex+1]} />}
+
+                </MainHeader>
             }
 
             {
@@ -67,12 +50,18 @@ function Blogs(){
                             <h2 className="text-2xl font-semibold">{id} Blogs</h2>
                     </div>
 
-                    <div className="how-we-teach-blogs grid grid-cols-12 gap-10 main-container-styles py-16 main-container-styles">
-                        {pexelBlogsPhotos.slice(0,9).map((img:Photo) => (
-                            <BlogsCard key={img.id}  blogImg={img.src.landscape} blogLink={'https://www.youtube.com/watch?v=B-ph18b3X7Y'}/>
-                        ))}
-                        
-                    </div>
+                    {(geoapifyIsLoading || gNewsLoading) && <ResponseLoader />}
+
+                   {!geoapifyIsLoading && !gNewsLoading &&   gNewsBlogs !== undefined &&
+
+                        <div className="how-we-teach-blogs grid grid-cols-12 gap-10 main-container-styles py-16 main-container-styles">
+                                
+                            {pexelBlogsPhotos.slice(0,9).map((img:Photo, idx:number) => (
+                                <BlogsCard key={img.id}  blogData={gNewsBlogs[idx]} />
+                            ))}
+                                
+                        </div>
+                     }
 
                 </section>
             }
@@ -82,5 +71,3 @@ function Blogs(){
     )
 
 }
-
-export default Blogs

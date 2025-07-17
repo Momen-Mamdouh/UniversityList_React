@@ -7,7 +7,7 @@ export interface IGeoapifyResponse {
     state: State
     datasource: Datasource[]
     ip: string
-  }
+}
   
   export interface City {
     name: string

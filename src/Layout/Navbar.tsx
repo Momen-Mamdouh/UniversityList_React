@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import SocialList from "../Utilities/Components/socialList"
+import SocialList from "../Components/socialList"
 import Logo from '/src/assets/logo.svg'
 
 

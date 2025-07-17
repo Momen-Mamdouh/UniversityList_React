@@ -1,24 +1,50 @@
-import axios from 'axios';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+// import { SafeParseResult, UniversitySchema, type University } from '../lib/ZodSchemas/universitySchema';
+import axios from 'axios';
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
-  const country = req.query.country as string;
+import { z, ZodError } from 'zod';
+
+ const UniversitySchema =  z.object({
+    domains: z.array(z.string()),
+    country: z.string(),
+    name: z.string(),
+    web_pages: z.array(z.string()),
+    alpha_two_code: z.string()
+  })
+
+type University = z.infer<typeof UniversitySchema>;
+
+type SafeParseResult<T> = {
+   success: boolean,
+   data?: T,
+   error?: ZodError<T>
+ }
+
+export default async function universitiesHandler(req: VercelRequest, res: VercelResponse) {
+  const universitiesApiBaseUrl = process.env.VITE_UNIVERSITES_API_URL ?? 'http://universities.hipolabs.com/search?';
+  const country = req.query.country;
 
   if (!country) {
-    return res.status(400).json({ error: 'Country is required' });
+    return res.status(400).json({ error: 'Country is required as a string' });
   }
 
   try {
-    const response = await axios.get('http://universities.hipolabs.com/search', {
-      params: { country },
-    });
+    const {data:rawData, statusText:uniResponseStatusText} = await axios.get(`${universitiesApiBaseUrl}country=${country}`);
 
-    return res.status(200).json(response.data);
-  } catch (error: any) {
-    console.error('Error fetching universities:', error?.message ?? error);
-    return res.status(500).json({ error: 'Failed to fetch universities' });
+    //^^ Validate & sanitize each item individually
+    const validatedData: University[] = rawData
+      .map((item: unknown) => UniversitySchema.safeParse(item))
+      .filter((result:SafeParseResult<University>) => result.success)
+      .map((result:SafeParseResult<University>) => result.data);
+
+    return res.status(200).json({responseStatusText:uniResponseStatusText, securedData:validatedData})
+  } catch (error:unknown) {
+    let errorMessage = 'Unknown fetch error';
+    if (error instanceof Error) {
+        errorMessage = error.message;
+    }
+    console.error(error);
+    return res.status(500).json({responseStatus: 500, error:errorMessage});
+   
   }
 }

@@ -1,18 +1,20 @@
 
 import './App.css'
 
-
-import Home from './Pages/Home/Home'
 import Layout from './Layout/Layout'
 
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import UniversityList from './Pages/UniversityList/universityList';
+import Home from './Pages/Home/Home';
 import Blogs from './Pages/Blogs/blogs';
 import Articles from './Pages/Atricles/articles';
 import About from './Pages/About/about';
 import Books from './Pages/Books/books';
 import NotFound from './Pages/NotFound/notFound';
+import UniversityList from './Pages/UniversityList/universityList';
+import { MainProvider } from '@/src/Contexts/mainContext';
+
+
 
 const myRouters = createHashRouter([
   {
@@ -69,8 +71,7 @@ const myRouters = createHashRouter([
   }
 ]);
 
-const myClient = new QueryClient({
-});
+const myClient = new QueryClient({});
 
 
 function App() {
@@ -78,8 +79,10 @@ function App() {
 
   return (
     <>
-    <QueryClientProvider client={myClient}>
-        <RouterProvider router={myRouters} />
+      <QueryClientProvider client={myClient}>
+            <MainProvider>
+              <RouterProvider router={myRouters} />
+            </MainProvider>
       </QueryClientProvider>
     </>
   )

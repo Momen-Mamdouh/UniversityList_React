@@ -1,37 +1,39 @@
 
-import LoaderScreen from "../../Components/Loader/loaderScreen"
-import { useBooksQuery } from "../../Services/gutendexBooksApi"
-import Carousel from "../../Utilities/Components/carousel"
-import Header from "../../Utilities/Components/header"
+import LoaderScreen from "@/src/Components/loaderScreen"
+import Carousel from "@/src/Features/Books/Components/Carousel/carousel"
+import MainHeader from "@/src/Components/mainHeader";
+import usePexelsPhotos from "@/src/Features/Articles/Hooks/usePexelsPhotos";
+import BookHeader from "@/src/Features/Books/Components/BookHeader/BookHeader";
+import { fallbackImg } from "@/src/Utilities/environment";
+import ResponseLoader from "@/src/Components/ResponseLaoder/ResponseLoader";
+import { useBooksQuery } from "@/src/Features/Books/Hooks/useBookQuery";
 
 
 
-function Books(){
-
-    const {data:booksData, isSuccess:booksAreFound, isLoading:booksLoading} = useBooksQuery();
-
+export default function Books(){
     
+    const {pexelsPhotos, pexelLoading, pexelIndex } = usePexelsPhotos({query:'Libraries'});
+    const {data:booksData, isSuccess:booksAreFound} = useBooksQuery();
 
 
     return( 
     <>
-             <LoaderScreen isLoading={booksLoading}/>
+             { pexelLoading && <LoaderScreen />}
 
             {
-                <Header bgClasses={`bg-[linear-gradient(90deg,rgba(2,0,36,0.4)_0%,rgba(9,9,121,0.2)_100%),url('/src/assets/books/books-header.jpg')] bg-cover bg-center  bg-no-repeat`} >
-                        <div className="grid grid-cols-12 h-full ">
-                                <div className="col-span-6 items-center flex flex-col py-56 z-5 md:justify-start justify-center">
-                                    <h1 className=" text-5xl px-10 md:w-2/3  md:text-start text-center"> Welcome To university Library</h1>
-                                </div>
-                        </div>
+                <MainHeader bgClasses={`bg-[linear-gradient(90deg,rgba(2,0,36,0.4)_0%,rgba(9,9,121,0.2)_100%) bg-cover bg-center bg-no-repeat`}
+                                            bgImg={pexelsPhotos[pexelIndex]?.src.original ?? fallbackImg}>
 
-                </Header >
+                    {pexelLoading && <ResponseLoader />}
+
+                    {!pexelLoading && <BookHeader pexelImage={pexelsPhotos[pexelIndex]} pexelImageNext={pexelsPhotos[pexelIndex+1]} />}
+                    
+                </MainHeader >
             } 
 
             {   <div className="booksSection secondary-bg">
-                    {
-                        booksAreFound? <Carousel booksData={booksData?.data.results} /> : ''
-                    }
+                    {!booksAreFound && <ResponseLoader />}
+                    { booksAreFound && <Carousel booksData={booksData?.data.results} /> }
                 </div>
                 
             }
@@ -39,5 +41,3 @@ function Books(){
    
     )
 }
-
-export default Books
