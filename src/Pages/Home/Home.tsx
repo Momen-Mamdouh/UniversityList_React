@@ -21,9 +21,9 @@ import { useGeoapify } from "@/src/Contexts/mainContext";
 
 export default function Home(){
 
-    const { country, geoapifyIsLoading } = useGeoapify();
+    const { country:_, geoapifyIsLoading } = useGeoapify();
 
-    const {data, isLoading:universitesIsLoading, isSuccess}  = useUniversityListQuery(country);
+    const {data, isLoading:universitesIsLoading, isSuccess}  = useUniversityListQuery('Egypt');
     const safeData = data?.securedData ?? [];
 
 
@@ -39,9 +39,9 @@ export default function Home(){
             {  
                     <MainHeader  bgClasses={`bg-[linear-gradient(90deg,rgba(2,0,36,0.4)_0%,rgba(9,9,121,0.2)_100%) bg-cover bg-center bg-no-repeat`}
                                     bgImg={heroImage} >
-                            <HomeHeader country={country} subHeroImageSrc={subHeroImage}   />
-                            <BestRibbon ribbonClasses={`bottom-10 rotate-3`} country={country} />
-                            <BestRibbon ribbonClasses={`bottom-10 -rotate-3`} country={country} />
+                            <HomeHeader country={'Egypt'} subHeroImageSrc={subHeroImage}   />
+                            <BestRibbon ribbonClasses={`bottom-10 rotate-3`} country={'Egypt'} />
+                            <BestRibbon ribbonClasses={`bottom-10 -rotate-3`} country={'Egypt'} />
                             
                     </MainHeader >
             }
@@ -55,13 +55,13 @@ export default function Home(){
             }
 
             {
-                isSuccess && <TopTenUniversitesList isSuccess={isSuccess} isLoading={universitesIsLoading} country={country} safeData={safeData} />
+                isSuccess && <TopTenUniversitesList isSuccess={isSuccess} isLoading={universitesIsLoading} country={'Egypt'} safeData={safeData} />
             }
 
             {   !isSuccess &&    <ResponseLoader />}
 
             {
-               <HomeBlogs country={country} />
+               <HomeBlogs country={'Egypt'} />
             }
 
         </>
