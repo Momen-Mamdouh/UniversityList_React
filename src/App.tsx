@@ -1,10 +1,10 @@
 
 import './App.css'
 
-import Layout from './Layout/Layout'
-
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import Layout from './Layout/Layout'
 import Home from './Pages/Home/Home';
 import Blogs from './Pages/Blogs/blogs';
 import Articles from './Pages/Atricles/articles';

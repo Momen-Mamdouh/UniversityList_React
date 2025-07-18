@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import emptySearchImg from '@/src/assets/EmptyComp/empty.svg';
 
+
 const EmptyComponent = () => {
   return (
     <div className='flex items-center flex-col'>
