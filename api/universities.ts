@@ -21,7 +21,8 @@ type SafeParseResult<T> = {
  }
 
 export default async function universitiesHandler(req: VercelRequest, res: VercelResponse) {
-  const universitiesApiBaseUrl = process.env.UNIVERSITES_API_URL ?? 'http://universities.hipolabs.com/search?';
+  // 'http://universities.hipolabs.com/search?'
+  const universitiesApiBaseUrl = process.env.UNIVERSITES_API_URL;
   const country = req.query.country;
   console.log('UNI_API_URL:', process.env.UNIVERSITES_API_URL);
   console.log('country:', country);
