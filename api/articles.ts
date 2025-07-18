@@ -7,6 +7,9 @@ export default async function NewsArticlesHandler(req: VercelRequest, res: Verce
   const newsApiUrl = process.env.NEWS_API_URL ?? 'https://newsapi.org/v2/everything';
   const newsApiKey = process.env.NEWS_API_KEY;
 
+  console.log('NEWS_API_URL:', process.env.NEWS_API_URL);
+  console.log('NEWS_API_KEY:', process.env.NEWS_API_KEY);
+
   if (!newsApiUrl || !newsApiKey || !q) {
      console.warn('Missing: ', { newsApiUrl, newsApiKey: !!newsApiKey, q });
     return res.status(400).json({ error: 'Missing baseUrl, API key, or query' });

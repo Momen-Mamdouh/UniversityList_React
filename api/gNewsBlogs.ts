@@ -11,6 +11,10 @@ export default async function gNewsBlogsHandler(req: VercelRequest, res: VercelR
   const gNewsApiUrl = process.env.GNEWS_BLOG_API_URL ?? 'https://gnews.io/api/v4/search';
   const gNewsApiKey = process.env.GNEWS_BLOG_API_KEY;
 
+  console.log('GNEWS_API_URL:', process.env.GNEWS_BLOG_API_URL);
+  console.log('GNEWS_API_KEY:', process.env.GNEWS_BLOG_API_KEY);
+
+
   if (!gNewsApiUrl || !gNewsApiKey || !q) {
      console.warn('Missing: ', { gNewsApiUrl, gNewsApiKey: !!gNewsApiKey, q });
     return res.status(400).json({ error: 'Missing baseUrl, API key, or query' });

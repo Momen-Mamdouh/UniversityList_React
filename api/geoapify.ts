@@ -6,6 +6,11 @@ import axios from 'axios';
 export default async function geoapifyHandler(_req: VercelRequest, res: VercelResponse) {
     const universitiesApiBaseUrl = process.env.GEOAPIFY_API_URL ?? 'https://api.geoapify.com/v1/ipinfo?';
     const geoapifyApiKey = process.env.GEOAPIFY_API_KEY;
+
+  console.log('GEOAPIFY_API_URL:', process.env.GEOAPIFY_API_URL);
+  console.log('GEOAPIFY_API_KEY:', process.env.GEOAPIFY_API_KEY);
+
+
   try {
     const {data, statusText:uniResponseStatusText} = await axios.get(`${universitiesApiBaseUrl}`, {
         params: { apiKey: geoapifyApiKey},

@@ -21,8 +21,10 @@ type SafeParseResult<T> = {
  }
 
 export default async function universitiesHandler(req: VercelRequest, res: VercelResponse) {
-  const universitiesApiBaseUrl = process.env.VITE_UNIVERSITES_API_URL ?? 'http://universities.hipolabs.com/search?';
+  const universitiesApiBaseUrl = process.env.UNIVERSITES_API_URL ?? 'http://universities.hipolabs.com/search?';
   const country = req.query.country;
+  console.log('UNI_API_URL:', process.env.UNIVERSITES_API_URL);
+  console.log('country:', country);
 
   if (!country) {
     return res.status(400).json({ error: 'Country is required as a string' });

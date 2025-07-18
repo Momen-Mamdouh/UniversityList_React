@@ -9,6 +9,9 @@ export default async function pexelsHandler(req: VercelRequest, res: VercelRespo
   const per_page = req.query.per_page as string ?? '30';
   // const size  = req.query.size as string ?? 'medium';
 
+  console.log('PEXELS_API_KEY:', process.env.PEXELS_API_KEY);
+  console.log('PEXELS_API_URL:', process.env.PEXELS_API_URL);
+
   if (!pexelsApiKey || !pexelsApiUrl  || !query) {
     return res.status(400).json({ error: 'Missing baseUrl, API key, or query' });
   }

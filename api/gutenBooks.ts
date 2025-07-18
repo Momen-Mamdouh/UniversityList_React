@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default async function booksHandler(_req: VercelRequest, res: VercelResponse) {
     const booksApiBaseUrl = process.env.GUTENDEXBOOKS_API_URL ?? 'https://gutendex.com/books/?';
-
+  console.log('BOOKS_API_URL:', process.env.GUTENDEXBOOKS_API_URL);
   try {
     const {data, statusText:booksResponseStatusText} = await axios.get(`${booksApiBaseUrl}`);
 
