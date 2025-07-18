@@ -25,7 +25,7 @@ export default function TopTenUniversitesList({isSuccess, country, safeData}:ITo
     return (
         <section className="relative uni-list-section  main-bg  py-16 overflow-hidden @container">
             <div className="uni-list-section-container main-container-styles grid grid-cols-2">
-                <h3 className="p-4  text-2xl opacity-60 tracking-wide w-full text-center pb-16  col-span-12">Top 10 universities in Egypt 2025:</h3>
+                <h3 className="p-4  text-2xl opacity-60 tracking-wide w-full text-center pb-16  col-span-12">{`Top 10 universities in ${country} 2025:`}</h3>
 
                 {
                 isSuccess ?  

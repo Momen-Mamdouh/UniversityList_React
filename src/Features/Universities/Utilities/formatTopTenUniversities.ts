@@ -73,4 +73,54 @@ const topTenUniversities:IUniName[]= [
             universityName:`Benha University`,
         },
 
+         {
+            universityRank:1,
+            universityName:`Princeton University`,
+        },
+
+        {
+            universityRank:2,
+            universityName:`Yale University`,
+        },
+
+        {
+            universityRank:3,
+            universityName:`The Massachusetts Institute of Technolog`,
+        },
+
+        {
+            universityRank:4,
+            universityName:`Harvard University`,
+        },
+
+        {
+            universityRank:5,
+            universityName:`Stanford University`,
+        },
+
+        {
+            universityRank:6,
+            universityName:`University of Pennsylvania`,
+        },
+
+        {
+            universityRank:7,
+            universityName:`Columbia University`,
+        },
+
+        {
+            universityRank:8,
+            universityName:`Cornell University`,
+        },
+
+        {
+            universityRank:9,
+            universityName:`California Institute of Technology`,
+        },
+
+        {
+            universityRank:10,
+            universityName:`University of California, Berkeley`,
+        },
+
 ];
