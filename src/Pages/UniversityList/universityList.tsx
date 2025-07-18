@@ -12,8 +12,8 @@ import LoaderScreen from '@/src/Components/loaderScreen';
 
 
 export default function UniversityList(){
-         const { country:_geoCountry, geoapifyIsLoading } = useGeoapify();
-        const [country, setCountry] = useState('Egypt');
+         const { country:geoCountry, geoapifyIsLoading } = useGeoapify();
+        const [country, setCountry] = useState(geoCountry);
 
     return(
         <>
@@ -29,7 +29,7 @@ export default function UniversityList(){
 
 
         {
-            <UniversitySearchSection    country={country} setCountry={setCountry} />
+            <UniversitySearchSection    country={geoCountry} setCountry={setCountry} />
         }
         
         

@@ -14,7 +14,7 @@ const MainContext = createContext<MainContextType | undefined>(undefined);
 
 export const MainProvider = ({ children }: { children: ReactNode }) => {
   const { data: geoapifyData, isLoading: geoapifyIsLoading } = useGeoapifyQuery();
-  const country = geoapifyData?.data.country.names.en ?? 'Eg';
+  const country = geoapifyData?.data.country.names.en ?? 'eg';
 
   return (
     <MainContext.Provider value={{ geoapifyIsLoading, country }}>
